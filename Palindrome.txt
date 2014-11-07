@@ -1,0 +1,64 @@
+import java.util.*;
+class Stack
+{
+
+    char items[]=new char[10];
+    int top;
+    Stack(){
+    top=-1;
+    }
+
+    void push(char item){
+    if(top==9)
+    System.out.print("overflow");
+    else
+    items[++top]=item;
+    }
+
+    char pop()
+    {
+    if(top==-1)  //top shud be -1 not 0
+    {
+    System.out.print("underflow");
+    return(0);
+    }
+    else
+    return(items[top--]);
+    }
+    }
+    class Palindrome
+    {
+    Stack s = new Stack();
+    int i;
+    void palindrome(String x)
+    {
+    // its not neccessary that the string is of length 5 
+        //char[] c=new char[5];
+    char c[] = x.toCharArray(); //convert to array
+    for(i=0;i<c.length;i++)
+    {
+        s.push(c[i]); //push each element from first to last, NOTE last element will pop first
+    }
+    /* your loop that prints string in same order
+     * for(int j=0;j<5;j++)
+        System.out.print(c[j]);    
+    */
+    String rev = new String(); // to store the reversed string
+    for(i=0;i<c.length;i++)
+        rev+=s.pop();
+    System.out.print(rev); //here is string. check for palindrome. I am sure u can do that :P
+    }
+}
+
+class Palindrome_Stack
+{
+public static void main (String[] args) {
+
+    System.out.println("enter the string");
+    String y;
+    Scanner in=new Scanner(System.in);
+    y=in.next();
+    Palindrome p=new Palindrome();
+    p.palindrome(y);
+    }    
+}
